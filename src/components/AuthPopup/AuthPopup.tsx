@@ -126,7 +126,7 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
     const handleLogin = () => {
         console.log(loginformData);
 
-        fetch(process.env.NEXT_PUBLIC_BACKEND_API + '/auth/login', {
+        fetch(process.env.NEXT_PUBLIC_BACKEND_API+ '/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -151,7 +151,7 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
             })
     }
     const handleSignup = () => {
-        // console.log(process.env.NEXT_PUBLIC_BACKEND_API);
+        console.log(process.env.NEXT_PUBLIC_BACKEND_API);
 
         fetch(process.env.NEXT_PUBLIC_BACKEND_API + '/auth/register', {
             method: 'POST',
@@ -189,16 +189,11 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
             {
                 showSignup ? (
                     <div className='authform'>
-
-                        <div className='left'>
-                            <Image src={logo} alt="Logo" />
-                        </div>
                         <div className='right'>
-                            <h1>Signup to become a freak</h1>
+                            <h1>Signup</h1>
                             <form action="">
                                 <Input
-                                    color="warning"
-                                    placeholder="name"
+                                    placeholder="Enter Your Name"
                                     size="lg"
                                     variant="solid"
                                     onChange={(e) => {
@@ -209,8 +204,7 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
                                     }}
                                 />
                                 <Input
-                                    color="warning"
-                                    placeholder="email"
+                                    placeholder="Enter Email"
                                     size="lg"
                                     variant="solid"
 
@@ -222,8 +216,8 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
                                     }}
                                 />
                                 <Input
-                                    color="warning"
-                                    placeholder="password"
+                                  
+                                    placeholder="Set a Password"
                                     size="lg"
                                     variant="solid"
                                     type='password'
@@ -237,7 +231,7 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
                                 />
 
 
-                                <Input color="warning" size="lg" variant="solid" type="number" placeholder='Weight in kg'
+                                <Input size="lg" variant="solid" type="number" placeholder='Weight in kg'
                                     onChange={(e) => {
                                         setSignupFormData({
                                             ...signupformData,
@@ -247,7 +241,7 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
                                 />
 
                                 <Select
-                                    color="warning"
+                                 
                                     placeholder="Activity Level"
                                     size="lg"
                                     variant="solid"
@@ -270,7 +264,7 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
                                 </Select>
 
                                 <Select
-                                    color="warning"
+                                  
                                     placeholder="Goal"
                                     size="lg"
                                     variant="solid"
@@ -291,7 +285,7 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
                                 </Select>
 
                                 <Select
-                                    color="warning"
+        
                                     placeholder="Gender"
                                     size="lg"
                                     variant="solid"
@@ -314,7 +308,7 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
                                 <label htmlFor="">Height</label>
 
 
-                                <Input color="warning" size="lg" variant="solid" type="number" placeholder='cm'
+                                <Input  size="lg" variant="solid" type="number" placeholder='cm'
                                     onChange={(e) => {
                                         setSignupFormData({
                                             ...signupformData,
@@ -325,12 +319,11 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
 
 
                                 <label htmlFor="">Date of Birth</label>
-                                <LocalizationProvider dateAdapter={AdapterDayjs}
-
-                                >
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <DesktopDatePicker defaultValue={dayjs(new Date())}
                                         sx={{
                                             backgroundColor: 'white',
+                                            
                                         }}
 
                                         onChange={(newValue) => {
@@ -357,15 +350,11 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
                     </div>
                 ) : (
                     <div className='authform'>
-                        <div className='left'>
-                            <Image src={logo} alt="Logo" />
-                        </div>
                         <div className='right'>
-                            <h1>Login to become a freak</h1>
+                            <h1>Login</h1>
                             <form action="">
                                 <Input
-                                    color="warning"
-                                    placeholder="email"
+                                    placeholder="Enter Your Email"
                                     size="lg"
                                     variant="solid"
                                     onChange={(e) => {
@@ -377,8 +366,7 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
                                 />
 
                                 <Input
-                                    color="warning"
-                                    placeholder="password"
+                                    placeholder="Enter Your Password"
                                     size="lg"
                                     variant="solid"
                                     type='password'

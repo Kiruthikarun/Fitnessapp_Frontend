@@ -1,21 +1,23 @@
 *{
   margin: 0;
   padding: 0;
+  color: rgb(255, 255, 255);
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 :root{
-  --col1: #ffc20e;
+  --col1: orange;
 }
 
 body{
-  background-color: black;
+  background-color: rgb(36, 34, 34);
 }
 .mainhead1{
-  -webkit-text-stroke: 1px var(--col1);
-  color: transparent;
+  color:orange;
   font-size: 10rem;
-  font-weight: 900;
+  font-weight: 2000;
   text-align: center;
+text-shadow: 1px 0px 1px #CCCCCC, 0px 1px 1px #EEEEEE, 2px 1px 1px #CCCCCC, 1px 2px 1px #EEEEEE, 3px 2px 1px #CCCCCC, 2px 3px 1px #EEEEEE, 4px 3px 1px #CCCCCC, 3px 4px 1px #EEEEEE, 5px 4px 1px #CCCCCC, 4px 5px 1px #EEEEEE, 6px 5px 1px #CCCCCC, 5px 6px 1px #EEEEEE, 7px 6px 1px #CCCCCC;
   
 }
 
@@ -25,6 +27,6 @@ body{
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: var(--col1);
+  background-color: var(White);
   box-shadow: inset 0 0 6px rgba(0,0,0,.5);
 }

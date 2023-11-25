@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../popup.css'
+import '../popup.css'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { AiFillDelete, AiOutlineClose } from 'react-icons/ai'
@@ -12,49 +12,45 @@ import{toast} from 'react-toastify'
 import { error } from 'console';
 
 
-interface CaloriIntakePopupProps {
-  setShowCalorieIntakePopup: React.Dispatch<React.SetStateAction<boolean>>;
+interface SleepIntakePopupProps{
+  setShowSleepIntakePopup: React.Dispatch<React.SetStateAction<boolean>>;
 }
-const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIntakePopup }) => {
+const SleepIntakePopup: React.FC<SleepIntakePopupProps> = ({ setShowSleepIntakePopup}) => {
   const color = '#ffc20e'
   const [items, setItems] = React.useState<any>([]);
   const [time , setTime] = React.useState<any>(dayjs(new Date()))
   const [date, setDate] = React.useState<Dayjs>(dayjs())
-  const [calorieIntake ,setCalorieIntake] = React.useState<any>({
-    item:'',
+  const [sleepIntake ,setSleepIntake] = React.useState<any>({
     date:'',
-    quantity:'',
-    quantitytype:'g'
+    durationInHrs:''
   })
   const[item,setItem]= React.useState<any>([])
 
-  const saveCalorieIntake = async ()=>{
+  const saveSleepIntake = async ()=>{
     let tempdate = date.format('YYYY-MM-DD')
     let temptime = time.format('HH:mm:ss')
     let tempdatetime = tempdate +' ' + temptime
     let finaldatetime = new Date(tempdatetime)
 
-    fetch(process.env.NEXT_PUBLIC_BACKEND_API + '/calorieintake/addcalorieintake',{
+    fetch(process.env.NEXT_PUBLIC_BACKEND_API + '/SleepTrack/addsleepentry',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       credentials:'include',
       body: JSON.stringify({
-        item: calorieIntake.item,
         date: finaldatetime,
-        quantity: calorieIntake.quantity,
-        quantitytype: calorieIntake.quantitytype
+        durationInhrs:sleepIntake.sleep
         })
     })
     .then(res => res.json())
     .then(data => {
       if(data.ok){
-      toast.success('Calorie Intake added sucessfully')
-      getCalorieIntake();
+      toast.success('Sleep entry added sucessfully')
+      getSleepIntake();
     }
     else{
-      toast.error('Failed to add Calorie Intake')
+      toast.error('Failed to add Sleep Entry')
 
     }
   })
@@ -66,16 +62,17 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
 
 
 
-  const getCalorieIntake = async ()=>{
+  const getSleepIntake = async ()=>{
     setItems([])
-    fetch(process.env.NEXT_PUBLIC_BACKEND_API+'/calorieintake/getcalorieintakebydate',{
+    fetch(process.env.NEXT_PUBLIC_BACKEND_API+'/SleepTrack/getusersleep',{
       method: 'POST',
       headers:{
         "Content-Type":"application/json",
       },
       credentials:'include',
       body: JSON.stringify({
-        date : date
+        date : date,
+        goal : sleepIntake.goalsleep
       })
     })
     .then(res => res.json())
@@ -94,8 +91,8 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
     })
 
   }
-  const deleteCalorieIntake = async (item:any)=>{
-    fetch(process.env.NEXT_PUBLIC_BACKEND_API+'/calorieintake/deletecalorieintake',{
+  const deleteSleepIntake = async (item:any)=>{
+    fetch(process.env.NEXT_PUBLIC_BACKEND_API+'/sleeptrack/deletesleepentry',{
       method:'DELETE',
       headers:{
         'Content-Type':'application/json'
@@ -110,7 +107,7 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
     .then(data =>{
       if(data.ok){
         toast.success("Deleted Successfuly")
-        getCalorieIntake()
+        getSleepIntake()
       }else{
         toast.error("error in deleting calorie intake")
       }
@@ -122,7 +119,7 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
 
 
   React.useEffect(()=>{
-    getCalorieIntake();
+    getSleepIntake();
   }, [date])
 
 
@@ -134,7 +131,7 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
   return (
     <div className='popupout'>
       <div className="popupbox">
-        <button className="close" onClick={()=>setShowCalorieIntakePopup(false)}><AiOutlineClose 
+        <button className="close" onClick={()=>setShowSleepIntakePopup(false)}><AiOutlineClose 
         style={
           {
             color:'black'
@@ -150,13 +147,13 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
         <TextField id="outlined-basic" 
         label="Food Item Name" variant='outlined' color='warning'
         onChange={(e)=>{
-          setCalorieIntake({...calorieIntake,item: e.target.value})
+          setSleepIntake({...sleepIntake,item: e.target.value})
         }}/>
 
         <TextField id="outlined-basic" 
         label="Amount in grams" variant='outlined' color='warning'
         onChange={(e)=>{
-          setCalorieIntake({...calorieIntake,quantity: e.target.value})
+          setSleepIntake({...sleepIntake,durationInHrs: e.target.value})
         }}/>
 
         <div className="timebox">
@@ -167,7 +164,7 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
         </div>
 
         <Button variant='contained' color='warning'
-        onClick={saveCalorieIntake}>Save</Button>
+        onClick={saveSleepIntake}>Save</Button>
 
       <div className="hrline"></div>
       <div className="items">
@@ -178,7 +175,7 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
                 <h3>{item.item}</h3>
                 <h3>{item.quantity}{item.quantitytype}</h3>
                 <button onClick={() => {
-                  deleteCalorieIntake(item);
+                  deleteSleepIntake(item);
                 }}
                 ><AiFillDelete /></button>
               </div>
@@ -193,4 +190,4 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
   )
 }
 
-export default CalorieIntakePopup
+export default SleepIntakePopup

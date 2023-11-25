@@ -1,0 +1,53 @@
+/* styles.css */
+
+.about {
+  margin: 0 auto;
+  margin-top: 100px;
+
+  padding: 20px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  background-color: #000000;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  max-width: max-content;
+  align-items: center;
+
+}
+
+.head {
+  color: orange;
+  text-align: center;
+  font-weight: bold;
+}
+
+.container {
+  margin-top: 20px;
+
+}
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+.uh {
+  margin-top: 20px;
+  font-size: 20px;
+  color: orange;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+/* Add hover effect to list items */
+li:hover {
+  color: orange;
+  cursor: pointer;
+}

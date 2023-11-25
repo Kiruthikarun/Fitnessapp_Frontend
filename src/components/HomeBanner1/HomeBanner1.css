@@ -5,14 +5,13 @@
     align-items: center;
     flex-wrap: wrap;
     margin: 10px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 .meters .card {
     width: 200px;
     height: 200px;
-    /* background-color: white;/ */
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
     transition: 0.3s;
     margin: 10px;
     display: flex;
@@ -24,28 +23,32 @@
 }
 
 .meters .card:nth-child(1) {
-    background: linear-gradient(90deg, #ffe38d 0%, #ffb784 100%);
+    background-color:rgb(239, 181, 94);
 }
 .meters .card:nth-child(2) {
-    background: linear-gradient(90deg, #b1ff7d 0%, #7effc7 100%);
+    background-color: rgb(239, 181, 94);
 }
 
 .meters .card:nth-child(3) {
-    background: linear-gradient(90deg, #80fff4 0%, #7ed6ff 100%);
+    background-color: rgb(239, 181, 94);
 }
 
 
 .meters .card:nth-child(4) {
-    background: linear-gradient(90deg, #ff7efb 0%, #ff7dd6 100%);
+    background-color: rgb(239, 181, 94);
 }
 
 .meters .card:nth-child(5) {
-    background: linear-gradient(90deg, #ff8080 0%, #ffb47e 100%);
+    background-color: rgb(239, 181, 94);
 }
 
 .meters .card:nth-child(6) {
-    background: linear-gradient(90deg, #ffff7c 0%, #ffb47e 100%);
+    background-color: rgb(239, 181, 94);
 }
+.meters .card:nth-child(7) {
+    background-color: rgb(239, 181, 94);
+}
+
 
 
 .meters .card-header {
@@ -58,28 +61,34 @@
 .meters .card-header-box {
     display: flex;
     flex-direction: column;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: rgb(0, 0, 0);
     min-width: 49%;
-    background-color: white;
+    background-color: #302e2b;
     aspect-ratio: 1/1;
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 .meters .card-header-box-name {
-    font-size: 12px;
+    font-size: 14px;
+    color: #ffffff;
     font-weight: bold;
+    text-align: center;
+
 }
 
 .meters .card-header-box-value {
     font-size: 14px;
-    color: #333;
+    color: #ffffff;
+    font-weight: bold;
 }
 
 .meters .card button{
-    background-color: #ffffff;
-    color: rgb(33, 33, 33);
+    background-color: #000000;
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 15px;
     padding: 5px 10px;
@@ -93,12 +102,25 @@
 
 
 .meters .card button:hover{
-    background-color: rgb(33, 33, 33);
+    background-color: rgb(0, 0, 0);
     color: white;
+    box-shadow: 2px -1px 43px 3px rgba(0,0,0,0.2);
 }
 
 
 .meters .textincircle{
-    color: #333;
-    font-weight: 700;
+    color: #000000;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+}
+
+.meters .textincircle .hrline{
+    width: 62px;
+    height: 2px;
+    background-color:rgb(33, 33, 33);
+    margin: 1px 0;
 }

@@ -7,8 +7,10 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(45, 41, 41, 0.5);
     z-index: 1000;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: black;
 
 }
 .popupbox {
@@ -16,12 +18,12 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     width: 500px;
     max-height: 80%;
     padding: 20px;
     border-radius: 10px;
-overflow: scroll;
+    overflow: scroll;
 }
 
 
@@ -37,6 +39,7 @@ overflow: scroll;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    color: black;
 }
 
 
@@ -44,18 +47,21 @@ overflow: scroll;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: black;
 }
 
 .popupbox .items .item h3 {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 100%;
     text-align: left;
+    color: black;
 }
 
 .popupbox .items .item button {
     background-color: var(--col1);
-    color: white;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
@@ -66,10 +72,10 @@ overflow: scroll;
 
 
 .popupbox .close {
-    background-color: black;
-    color: var(--col1);
-    width: 40px;
-    height: 40px;
+    background-color: rgb(0, 0, 0);
+    color: black;
+    width: 20px;
+    height: 20px;
     border: none;
     border-radius: 50%;
     font-size: 20px;
